@@ -2,29 +2,29 @@ import './style.css';
 
 const todoData = [
   {
+    description: 'Brush and shower',
+    completed: true,
     index: 1,
-    activity: 'Brush and shower',
-    isComplete: true,
   },
   {
+    description: 'Eat and exercise',
+    completed: true,
     index: 2,
-    activity: 'Eat and exercise',
-    isComplete: true,
   },
   {
+    description: 'Watch YouTube shorts',
+    completed: false,
     index: 3,
-    activity: 'Watch YouTube shorts',
-    isComplete: false,
   },
   {
+    description: 'Microverse hours',
+    completed: false,
     index: 4,
-    activity: 'Microverse hours',
-    isComplete: false,
   },
   {
+    description: 'Call family',
+    completed: true,
     index: 5,
-    activity: 'Call family',
-    isComplete: true,
   },
 ];
 
@@ -34,8 +34,8 @@ const listItem = () => {
     listData += `
     <li class="todo-item">
       <div class="todo-event">
-        <input type="checkbox" ${data.isComplete ? 'checked' : ''} class="status" title="Checked">
-        <input type="text" class="todo" value="${data.activity}">
+        <input type="checkbox" ${data.completed ? 'checked' : ''} class="status" title="Checked">
+        <input type="text" class="todo" value="${data.description}">
         <i class="fa fa-trash delete hide" aria-hidden="true"></i>
         <i class="fa fa-ellipsis-v reorder" aria-hidden="true"></i>
       </div>

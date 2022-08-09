@@ -18,7 +18,6 @@ ul {
 /* Primary colors */
 :root {
   --grey: #696969;
-  --black: #000;
   --milky: #f6f6f6;
 }
 
@@ -128,4 +127,19 @@ header i {
 
 #clear-completed:hover {
   font-weight: 600;
+}
+
+.todo-event {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-event input {
+  border: 0;
+  outline: none;
+}
+
+.todo-event input[type="text"] {
+  width: 89.8%;
 }

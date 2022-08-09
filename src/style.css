@@ -56,7 +56,6 @@ hr {
   margin: auto;
   width: 40vw;
   min-width: 300px;
-  height: fit-content;
   box-shadow: 0 1px 5px 0.1px var(--grey);
   background: white;
   padding: 10px;
@@ -87,6 +86,11 @@ header i {
 .enter-todo input {
   border: none;
   width: 100%;
+}
+
+.todo-event input {
+  border: 0;
+  outline: none;
 }
 
 .enter-todo input:focus {
@@ -133,11 +137,6 @@ header i {
   padding: 10px 0;
   display: flex;
   justify-content: space-between;
-}
-
-.todo-event input {
-  border: 0;
-  outline: none;
 }
 
 .todo-event input[type="text"] {

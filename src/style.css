@@ -1,0 +1,116 @@
+/* Global */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* Primary colors */
+:root {
+  --grey: #696969;
+  --black: #000;
+  --milky: #f6f6f6;
+}
+
+hr {
+  width: calc(100% + 20px);
+  margin-left: -10px;
+  border: none;
+  height: 0.2px;
+  background: #c0c0c0;
+}
+
+.container {
+  background: var(--milky);
+  border: 2px solid red;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.app-body {
+  margin: auto;
+  width: 40vw;
+  min-width: 300px;
+  height: fit-content;
+  box-shadow: 0 1px 5px 0.1px var(--grey);
+  background: white;
+  padding: 10px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+header h1 {
+  font-size: 16px;
+}
+
+header i {
+  transform: rotate(120deg);
+}
+
+.enter-todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.enter-todo input {
+  border: none;
+  width: 100%;
+}
+
+.enter-todo input:focus {
+  outline: none;
+}
+
+.enter {
+  height: 10px;
+  font-size: 14px;
+  color: #c0c0c0;
+  cursor: pointer;
+}
+
+#enter-todo::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+#enter-todo::-moz-placeholder {
+  font-style: italic;
+}
+
+#enter-todo:-moz-placeholder {
+  font-style: italic;
+}
+
+#enter-todo:-ms-input-placeholder {
+  font-style: italic;
+}
+
+#clear-completed {
+  padding: 10px;
+  cursor: pointer;
+  background: var(--milky);
+  border: 0;
+  width: calc(100% + 20px);
+  margin-left: -10px;
+}
+
+#clear-completed:hover {
+  font-weight: 600;
+}

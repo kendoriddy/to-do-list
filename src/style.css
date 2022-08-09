@@ -30,6 +30,21 @@ hr {
   background: #c0c0c0;
 }
 
+.hide {
+  display: none;
+}
+
+.reorder {
+  font-size: 16px;
+  color: #c0c0c0;
+  cursor: move;
+}
+
+.delete {
+  color: #c0c0c0;
+  cursor: pointer;
+}
+
 .container {
   background: var(--milky);
   border: 2px solid red;

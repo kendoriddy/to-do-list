@@ -69,11 +69,16 @@ header {
 }
 
 header h1 {
-  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  
 }
 
 header i {
   transform: rotate(120deg);
+  font-size: 13px;
+  cursor: pointer;
+  color: #c0c0c0;
 }
 
 .enter-todo {

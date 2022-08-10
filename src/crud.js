@@ -53,7 +53,7 @@ const showToDos = () => {
     });
 
     document.querySelectorAll('.edit').forEach((e) => {
-      e.addEventListener('click', console.log('edit me'));
+      e.addEventListener('click', editTodos);
     });
   } else {
     document.querySelector('.todo-collection').innerHTML = '';
@@ -73,6 +73,60 @@ const deleteTodos = (e) => {
   showToDos();
 };
 
+const editTodos = (e) => {
+  const editInput = e.target;
+  const editBtn = document.getElementById(`${editInput.id}`);
+  const inputId = document.querySelector(`#activity-${editInput.id}`);
+  inputId.removeAttribute('readonly');
+  inputId.focus();
+
+  editBtn.style.display = 'none';
+
+  const taskList = document.querySelector(`#tasks-${editInput.id}`);
+  taskList.classList.add('active');
+
+  const task = document.querySelector(`#task-${editInput.id}`);
+
+  const save = document.createElement('img');
+  save.setAttribute('src', saveIcon);
+  save.classList.add(`save-${editInput.id}`);
+  task.appendChild(save);
+
+  const removeBtn = document.createElement('img');
+  removeBtn.classList.add(`delete-${editInput.id}`);
+  removeBtn.setAttribute('src', deleteIcon);
+  task.appendChild(removeBtn);
+
+  document.querySelectorAll(`.delete-${editInput.id}`).forEach((e) => {
+    e.addEventListener('click', deleteTodos);
+  });
+
+  document.querySelectorAll(`.save-${editInput.id}`).forEach((e) => {
+    e.addEventListener('click', saveTodos);
+  });
+};
+
+const saveTodos = (e) => {
+  const saveBtn = e.target;
+  const existingTodos = JSON.parse(localStorage.getItem('todos'));
+  const btnClass = saveBtn.className;
+  const btnId = btnClass.split('-');
+  const id = parseInt(btnId[1], 10);
+  const taskList = document.querySelector(`#tasks-${id}`);
+  const saveEdit = document.querySelector(`.save-${id}`);
+  const deleteEdit = document.querySelector(`.delete-${id}`);
+  const inputId = document.querySelector(`#activity-${id}`);
+  const editBtn = document.getElementById(`${id}`);
+  editBtn.style.display = 'block';
+
+  existingTodos[id].description = inputId.value;
+  localStorage.setItem('todos', JSON.stringify(existingTodos));
+  saveEdit.remove();
+  deleteEdit.remove();
+  taskList.classList.remove('active');
+  inputId.setAttribute('readonly', true);
+};
+
 const storeToDos = (e) => {
   e.preventDefault();
   let existingTodos = JSON.parse(localStorage.getItem('todos'));
@@ -80,7 +134,7 @@ const storeToDos = (e) => {
 
   const inputTodo = document.getElementById('enter-todo').value;
   const newTodo = new ToDo(inputTodo, false, existingTodos.length + 1);
-  
+
   if (inputTodo !== '') {
     existingTodos.push(newTodo);
     localStorage.setItem('todos', JSON.stringify(existingTodos));

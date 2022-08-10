@@ -11,26 +11,35 @@
     <title>To-Do List</title>
   </head>
   <body>
-    <div class="container">
+    <main class="container">
       <div class="app-body">
         <header>
-          <h1>Demo</h1>
+          <h1>My To Do</h1>
           <i class="fa fa-refresh" id="refresh" aria-hidden="true"></i>
         </header>
         <hr />
 
-        <div class="enter-todo">
-          <input type="text" id="enter-todo" placeholder="Add to your list..." />
+        <form class="enter-todo">
+          <input
+            type="text"
+            id="enter-todo"
+            name="description"
+            class="input"
+            placeholder="Add to your list..."
+            required
+          />
           <span class="material-icons enter" title="Click this or press enter to submit"
             >keyboard_return</span
           >
-        </div>
+        </form>
         <hr />
 
         <ul class="todo-collection"></ul>
 
-        <input type="button" id="clear-completed" value="Clear all Completed" />
+        <div class="clear-todo">
+          <input type="button" id="clear-completed" value="Clear all Completed" />
+        </div>
       </div>
-    </div>
+    </main>
   </body>
 </html>

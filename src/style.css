@@ -54,9 +54,9 @@ hr {
 
 .app-body {
   margin: auto;
-  width: 40vw;
+  width: 60%;
   min-width: 300px;
-  box-shadow: 0 1px 5px 0.1px var(--grey);
+  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.1), 5px 5px 5px rgba(0, 0, 0, 0.1);
   background: white;
   padding: 10px;
 }

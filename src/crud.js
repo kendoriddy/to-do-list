@@ -60,18 +60,7 @@ const showToDos = () => {
   }
 };
 
-const deleteTodos = (e) => {
-  const btnClass = e.target.className;
-  const btnId = btnClass.split('-');
-  const id = parseInt(btnId[1], 10);
-  let existingTodos = JSON.parse(localStorage.getItem('todos'));
-  existingTodos = existingTodos.filter((todos, index) => index !== id);
-  e.target.parentNode.remove();
-  // eslint-disable-next-line no-return-assign
-  existingTodos.forEach((task, i) => task.index = i + 1);
-  localStorage.setItem('todos', JSON.stringify(existingTodos));
-  showToDos();
-};
+
 
 const editTodos = (e) => {
   const editInput = e.target;

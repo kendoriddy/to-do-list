@@ -10,6 +10,55 @@ class ToDo {
   }
 }
 
+const showToDos = () => {
+  const existingTodos = JSON.parse(localStorage.getItem('todos'));
+  if (existingTodos !== null && existingTodos.length > 0) {
+    const collection = document.querySelector('.todo-collection');
+    collection.innerHTML = '';
+
+    existingTodos.forEach((todo, index) => {
+      const unordered = document.createElement('ul');
+      const ordered = document.createElement('li');
+      const liner = document.createElement('hr')
+
+      unordered.classList.add('tasks');
+      unordered.id = `tasks-${index}`;
+
+      ordered.classList.add('tasks');
+      ordered.id = `task-${index}`;
+
+      const check = document.createElement('input');
+      check.type = 'checkbox';
+      check.classList.add('check');
+
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.classList.add('activity');
+      input.id = `activity-${index}`;
+      input.setAttribute('readonly', true);
+      input.value = `${todo.description}`;
+      input.innerHTML = todo.description;
+
+      const edit = document.createElement('img');
+      edit.setAttribute('src', dots);
+      edit.classList.add('edit');
+      edit.id = index;
+
+      collection.appendChild(unordered);
+      collection.appendChild(liner);
+      unordered.appendChild(ordered);
+      ordered.appendChild(check);
+      ordered.appendChild(input);
+      ordered.appendChild(edit);
+    });
+
+    document.querySelectorAll('.edit').forEach((e) => {
+      e.addEventListener('click', console.log('edit me'));
+    });
+  } else {
+    document.querySelector('.todo-collection').innerHTML = '';
+  }
+};
 
 const storeToDos = (e) => {
   e.preventDefault();
@@ -23,7 +72,8 @@ const storeToDos = (e) => {
     existingTodos.push(newTodo);
     localStorage.setItem('todos', JSON.stringify(existingTodos));
     document.getElementById('enter-todo').value = '';
+    showToDos();
   }
 };
 
-export { storeToDos };
+export { storeToDos, showToDos };

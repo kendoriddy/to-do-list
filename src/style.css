@@ -15,6 +15,10 @@ ul {
   list-style-type: none;
 }
 
+li {
+  list-style: none;
+}
+
 /* Primary colors */
 :root {
   --grey: #696969;
@@ -153,4 +157,16 @@ header i {
 
 .active {
   background-color: var(--grey);
+}
+
+.check {
+  width: 15px;
+  height: 15px;
+}
+
+.activity {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
 }

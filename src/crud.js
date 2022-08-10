@@ -9,3 +9,5 @@ class ToDo {
     this.index = index;
   }
 }
+
+console.log(ToDo);

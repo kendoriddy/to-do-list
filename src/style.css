@@ -156,7 +156,7 @@ header i {
 }
 
 .active {
-  background-color: var(--grey);
+  background-color: var(--milky);
 }
 
 .check {

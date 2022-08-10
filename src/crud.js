@@ -10,6 +10,40 @@ class ToDo {
   }
 }
 
+const editTodos = (e) => {
+  const editInput = e.target;
+  const editBtn = document.getElementById(`${editInput.id}`);
+  const inputId = document.querySelector(`#activity-${editInput.id}`);
+  inputId.removeAttribute('readonly');
+  inputId.focus();
+  
+  editBtn.style.display = 'none';
+  inputId.style.outlineColor = 'gray';
+  
+  const taskList = document.querySelector(`#tasks-${editInput.id}`);
+  taskList.classList.add('active');
+  
+  const task = document.querySelector(`#task-${editInput.id}`);
+  
+  const save = document.createElement('img');
+  save.setAttribute('src', saveIcon);
+  save.classList.add(`save-${editInput.id}`);
+  task.appendChild(save);
+  
+  const removeBtn = document.createElement('img');
+  removeBtn.classList.add(`delete-${editInput.id}`);
+  removeBtn.setAttribute('src', deleteIcon);
+  task.appendChild(removeBtn);
+  
+  document.querySelectorAll(`.delete-${editInput.id}`).forEach((e) => {
+    e.addEventListener('click', deleteTodos);
+  });
+  
+  document.querySelectorAll(`.save-${editInput.id}`).forEach((e) => {
+    e.addEventListener('click', saveTodos);
+  });
+};
+
 const showToDos = () => {
   const existingTodos = JSON.parse(localStorage.getItem('todos'));
   if (existingTodos !== null && existingTodos.length > 0) {
@@ -71,39 +105,6 @@ const deleteTodos = (e) => {
   existingTodos.forEach((task, i) => task.index = i + 1);
   localStorage.setItem('todos', JSON.stringify(existingTodos));
   showToDos();
-};
-
-const editTodos = (e) => {
-  const editInput = e.target;
-  const editBtn = document.getElementById(`${editInput.id}`);
-  const inputId = document.querySelector(`#activity-${editInput.id}`);
-  inputId.removeAttribute('readonly');
-  inputId.focus();
-
-  editBtn.style.display = 'none';
-
-  const taskList = document.querySelector(`#tasks-${editInput.id}`);
-  taskList.classList.add('active');
-
-  const task = document.querySelector(`#task-${editInput.id}`);
-
-  const save = document.createElement('img');
-  save.setAttribute('src', saveIcon);
-  save.classList.add(`save-${editInput.id}`);
-  task.appendChild(save);
-
-  const removeBtn = document.createElement('img');
-  removeBtn.classList.add(`delete-${editInput.id}`);
-  removeBtn.setAttribute('src', deleteIcon);
-  task.appendChild(removeBtn);
-
-  document.querySelectorAll(`.delete-${editInput.id}`).forEach((e) => {
-    e.addEventListener('click', deleteTodos);
-  });
-
-  document.querySelectorAll(`.save-${editInput.id}`).forEach((e) => {
-    e.addEventListener('click', saveTodos);
-  });
 };
 
 const saveTodos = (e) => {

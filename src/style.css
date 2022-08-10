@@ -170,3 +170,12 @@ header i {
   border: none;
   outline: none;
 }
+
+.todo-collection ul {
+  padding: 5px 0;
+}
+
+.todo-collection ul li {
+  display: flex;
+  align-items: center;
+}

@@ -3,7 +3,6 @@ import * as toDos from './crud.js';
 
 document.querySelector('.enter').addEventListener('click', toDos.storeToDos);
 document.querySelector('form').addEventListener('submit', toDos.storeToDos);
-// window.addEventListener('load', toDos.storeToDos);
 window.addEventListener('load', toDos.showToDos);
 
 // const listItem = () => {

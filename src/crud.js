@@ -10,4 +10,20 @@ class ToDo {
   }
 }
 
-console.log(ToDo);
+
+const storeToDos = (e) => {
+  e.preventDefault();
+  let existingTodos = JSON.parse(localStorage.getItem('todos'));
+  existingTodos = existingTodos === null ? [] : existingTodos;
+
+  const inputTodo = document.getElementById('enter-todo').value;
+  const newTodo = new ToDo(inputTodo, false, existingTodos.length + 1);
+  
+  if (inputTodo !== '') {
+    existingTodos.push(newTodo);
+    localStorage.setItem('todos', JSON.stringify(existingTodos));
+    document.getElementById('enter-todo').value = '';
+  }
+};
+
+export { storeToDos };

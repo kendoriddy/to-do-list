@@ -1,4 +1,5 @@
 import './style.css';
+import * as toDos from './crud.js';
 
 const todoData = [
   {
@@ -27,6 +28,11 @@ const todoData = [
     index: 5,
   },
 ];
+
+localStorage.setItem('todos', JSON.stringify(todoData));
+document.querySelector('.enter').addEventListener('click', toDos.storeToDos);
+document.querySelector('form').addEventListener('submit', toDos.storeToDos);
+window.addEventListener('load', toDos.storeToDos);
 
 const listItem = () => {
   let listData = '';

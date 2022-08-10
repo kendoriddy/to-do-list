@@ -146,3 +146,11 @@ header i {
 .todo-event input[type="text"] {
   width: 89.8%;
 }
+
+.completed {
+  text-decoration: line-through;
+}
+
+.active {
+  background-color: var(--grey);
+}

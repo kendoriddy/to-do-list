@@ -42,6 +42,21 @@ const completedTodos = (e) => {
   }
 };
 
+const clearCompletedTodos = () => {
+  const completed = document.querySelectorAll('input:checked');
+  console.log(completed);
+  let existingTodos = JSON.parse(localStorage.getItem('todos'));
+  if (completed) {
+    completed.forEach((item) => {
+      const todo = item.parentNode;
+      todo.parentNode.remove();
+    });
+  }
+  existingTodos = existingTodos.filter((todos) => todos.completed === false);
+  existingTodos.forEach((todo, i) => (todo.index = i + 1));
+  localStorage.setItem('todos', JSON.stringify(existingTodos));
+};
+
 const saveTodos = (e) => {
   const saveBtn = e.target;
   const existingTodos = JSON.parse(localStorage.getItem('todos'));

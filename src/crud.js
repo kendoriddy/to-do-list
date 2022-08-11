@@ -24,17 +24,23 @@ const deleteTodos = (e) => {
   showToDos();
 };
 
-const clearCompletedTodos = () => {
-  const completed = document.querySelector('input:checked');
-  let existingTodos = JSON.parse(localStorage.getItem('todos'));
-  if (completed) {
-    completed.forEach((item) => {
-      const todo = item.parentNode;
-      todo.parentNode.remove();
-    });
+const completedTodos = (e) => {
+  const checkbox = e.target;
+  let btnId = checkbox.id;
+  btnId = btnId.split('-');
+  const id = parseInt(btnId[1], 10);
+  const inputId = document.querySelector(`#activity-${id}`);
+  const existingTodos = JSON.parse(localStorage.getItem('todos'));
+  if (checkbox.checked) {
+    existingTodos[id].completed = true;
+    inputId.classList.add('completed');
+    localStorage.setItem('todos', JSON.stringify(existingTodos));
+  } else {
+    existingTodos[id].completed = false;
+    inputId.classList.remove('completed');
+    localStorage.setItem('todos', JSON.stringify(existingTodos));
   }
-  existingTodos = existingTodos.filter((todos) => todos.completed === false);
-}
+};
 
 const saveTodos = (e) => {
   const saveBtn = e.target;
@@ -111,6 +117,7 @@ const showToDos = () => {
       const check = document.createElement('input');
       check.type = 'checkbox';
       check.classList.add('check');
+      check.id = `check-${index}`;
 
       const input = document.createElement('input');
       input.type = 'text';
@@ -132,8 +139,14 @@ const showToDos = () => {
       ordered.appendChild(edit);
     });
 
+    document.querySelector('#clear-completed').style.display = 'block';
+
     document.querySelectorAll('.edit').forEach((e) => {
       e.addEventListener('click', editTodos);
+    });
+
+    document.querySelectorAll('.check').forEach((e) => {
+      e.addEventListener('change', completedTodos);
     });
   } else {
     document.querySelector('.todo-collection').innerHTML = '';
@@ -156,4 +169,4 @@ const storeToDos = (e) => {
   }
 };
 
-export { storeToDos, showToDos };
+export { storeToDos, showToDos, clearCompletedTodos };

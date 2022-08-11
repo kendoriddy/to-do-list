@@ -15,6 +15,10 @@ ul {
   list-style-type: none;
 }
 
+li {
+  list-style: none;
+}
+
 /* Primary colors */
 :root {
   --grey: #696969;
@@ -54,9 +58,9 @@ hr {
 
 .app-body {
   margin: auto;
-  width: 40vw;
+  width: 60%;
   min-width: 300px;
-  box-shadow: 0 1px 5px 0.1px var(--grey);
+  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.1), 5px 5px 5px rgba(0, 0, 0, 0.1);
   background: white;
   padding: 10px;
 }
@@ -145,4 +149,33 @@ header i {
 
 .todo-event input[type="text"] {
   width: 89.8%;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.active {
+  background-color: var(--milky);
+}
+
+.check {
+  width: 15px;
+  height: 15px;
+}
+
+.activity {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+.todo-collection ul {
+  padding: 5px 0;
+}
+
+.todo-collection ul li {
+  display: flex;
+  align-items: center;
 }

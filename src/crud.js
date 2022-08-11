@@ -24,6 +24,18 @@ const deleteTodos = (e) => {
   showToDos();
 };
 
+const clearCompletedTodos = () => {
+  const completed = document.querySelector('input:checked');
+  let existingTodos = JSON.parse(localStorage.getItem('todos'));
+  if (completed) {
+    completed.forEach((item) => {
+      const todo = item.parentNode;
+      todo.parentNode.remove();
+    });
+  }
+  existingTodos = existingTodos.filter((todos) => todos.completed === false);
+}
+
 const saveTodos = (e) => {
   const saveBtn = e.target;
   const existingTodos = JSON.parse(localStorage.getItem('todos'));
@@ -106,7 +118,6 @@ const showToDos = () => {
       input.id = `activity-${index}`;
       input.setAttribute('readonly', true);
       input.value = `${todo.description}`;
-      input.innerHTML = todo.description;
 
       const edit = document.createElement('img');
       edit.setAttribute('src', dots);

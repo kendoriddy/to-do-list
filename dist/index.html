@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webpack Exercise</title>
-<script defer src="main.js"></script></head>
-<body>
-    <h1>Hello Webpack!</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font awesome  -->
+    <script src="https://use.fontawesome.com/3d717ebef2.js"></script>
+    <!-- Google Material icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <title>To-Do List</title>
+  <script defer src="/https://github.com/kendoriddy/to-do-list/main.js"></script></head>
+  <body>
+    <main class="container">
+      <div class="app-body">
+        <header>
+          <h1>My To Do</h1>
+          <i class="fa fa-refresh" id="refresh" aria-hidden="true"></i>
+        </header>
+        <hr />
+
+        <form class="enter-todo">
+          <input
+            type="text"
+            id="enter-todo"
+            name="enter-todo"
+            class="input"
+            placeholder="Add to your list..."
+            required
+          />
+          <span class="material-icons enter" title="Click this or press enter to submit"
+            >keyboard_return</span
+          >
+        </form>
+        <hr />
+
+        <div class="todo-collection"></div>
+
+        <div class="clear-todo">
+          <input type="button" class="clear-completed" id="clear-completed" value="Clear all Completed" />
+        </div>
+        <p class="note">🤞 Click the three vertical dots to edit and delete task</p>
+      </div>
+    </main>
+  </body>
 </html>

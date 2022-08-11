@@ -17,8 +17,9 @@ const deleteTodos = (e) => {
   let existingTodos = JSON.parse(localStorage.getItem('todos'));
   existingTodos = existingTodos.filter((todos, index) => index !== id);
   e.target.parentNode.remove();
-  // eslint-disable-next-line no-return-assign
-  existingTodos.forEach((task, i) => task.index = i + 1);
+  existingTodos.forEach((task, i) => {
+    task.index = i + 1;
+  });
   localStorage.setItem('todos', JSON.stringify(existingTodos));
   // eslint-disable-next-line no-use-before-define
   showToDos();
@@ -53,7 +54,9 @@ const clearCompletedTodos = () => {
     });
   }
   existingTodos = existingTodos.filter((todos) => todos.completed === false);
-  existingTodos.forEach((todo, i) => (todo.index = i + 1));
+  existingTodos.forEach((todo, i) => {
+    (todo.index = i + 1);
+  });
   localStorage.setItem('todos', JSON.stringify(existingTodos));
 };
 

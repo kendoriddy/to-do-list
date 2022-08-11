@@ -180,3 +180,8 @@ header i {
   display: flex;
   align-items: center;
 }
+
+.note {
+  font-size: 12px;
+  display: none;
+}

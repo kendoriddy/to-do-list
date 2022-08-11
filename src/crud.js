@@ -124,6 +124,7 @@ const showToDos = () => {
     });
 
     document.querySelector('#clear-completed').style.display = 'block';
+    document.querySelector('.note').style.display = 'block';
 
     document.querySelectorAll('.edit').forEach((e) => {
       e.addEventListener('click', editTodos);

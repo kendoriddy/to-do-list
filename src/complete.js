@@ -18,7 +18,6 @@ const completedTodos = (e) => {
 
 const clearCompletedTodos = () => {
   const completed = document.querySelectorAll('input:checked');
-  console.log(completed);
   let existingTodos = JSON.parse(localStorage.getItem('todos'));
   if (completed) {
     completed.forEach((item) => {

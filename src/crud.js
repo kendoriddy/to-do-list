@@ -27,7 +27,6 @@ const deleteTodos = (e) => {
 };
 
 const saveTodo = (id, isBtn = false) => {
-  console.log(id);
   const taskList = document.querySelector(`#tasks-${id}`);
   const saveEdit = document.querySelector(`.save-${id}`);
   const deleteEdit = document.querySelector(`.delete-${id}`);
@@ -135,7 +134,6 @@ const showToDos = () => {
       ['focus', 'blur', 'keyup'].forEach((evt) => {
         input.addEventListener(evt, (e) => {
           if (evt === 'blur' || (evt === 'keyup' && e.key === 'Enter')) {
-          // It's a modify
             const taskIndex = Number(e.target.id.split('-')[1]);
             saveTodo(taskIndex);
             e.target.blur();
@@ -160,7 +158,6 @@ const showToDos = () => {
 };
 
 const activity = document.querySelectorAll('.activity');
-console.log(activity);
 
 activity.forEach((element) => {
   ['focus', 'blur', 'keyup'].forEach((evt) => {

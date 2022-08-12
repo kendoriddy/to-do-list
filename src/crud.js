@@ -1,3 +1,4 @@
+import { completedTodos } from './complete.js';
 import dots from '../assets/images/dots.png';
 import deleteIcon from '../assets/images/delete.png';
 import saveIcon from '../assets/images/save.jpeg';
@@ -17,19 +18,15 @@ const deleteTodos = (e) => {
   let existingTodos = JSON.parse(localStorage.getItem('todos'));
   existingTodos = existingTodos.filter((todos, index) => index !== id);
   e.target.parentNode.remove();
-  // eslint-disable-next-line no-return-assign
-  existingTodos.forEach((task, i) => task.index = i + 1);
+  existingTodos.forEach((task, i) => {
+    task.index = i + 1;
+  });
   localStorage.setItem('todos', JSON.stringify(existingTodos));
   // eslint-disable-next-line no-use-before-define
   showToDos();
 };
 
-const saveTodos = (e) => {
-  const saveBtn = e.target;
-  const existingTodos = JSON.parse(localStorage.getItem('todos'));
-  const btnClass = saveBtn.className;
-  const btnId = btnClass.split('-');
-  const id = parseInt(btnId[1], 10);
+const saveTodo = (id, isBtn = false) => {
   const taskList = document.querySelector(`#tasks-${id}`);
   const saveEdit = document.querySelector(`.save-${id}`);
   const deleteEdit = document.querySelector(`.delete-${id}`);
@@ -37,12 +34,23 @@ const saveTodos = (e) => {
   const editBtn = document.getElementById(`${id}`);
   editBtn.style.display = 'block';
 
+  const existingTodos = JSON.parse(localStorage.getItem('todos'));
   existingTodos[id].description = inputId.value;
   localStorage.setItem('todos', JSON.stringify(existingTodos));
-  saveEdit.remove();
-  deleteEdit.remove();
+  if (isBtn) {
+    saveEdit.remove();
+    deleteEdit.remove();
+  }
   taskList.classList.remove('active');
   inputId.setAttribute('readonly', true);
+};
+
+const saveTodos = (e) => {
+  const saveBtn = e.target;
+  const btnClass = saveBtn.className;
+  const btnId = btnClass.split('-');
+  const id = parseInt(btnId[1], 10);
+  saveTodo(id, true);
 };
 
 const editTodos = (e) => {
@@ -99,14 +107,17 @@ const showToDos = () => {
       const check = document.createElement('input');
       check.type = 'checkbox';
       check.classList.add('check');
+      check.id = `check-${index}`;
 
       const input = document.createElement('input');
       input.type = 'text';
       input.classList.add('activity');
       input.id = `activity-${index}`;
-      input.setAttribute('readonly', true);
       input.value = `${todo.description}`;
-      input.innerHTML = todo.description;
+      if (todo.completed) {
+        check.checked = true;
+        input.classList.add('completed');
+      }
 
       const edit = document.createElement('img');
       edit.setAttribute('src', dots);
@@ -114,20 +125,52 @@ const showToDos = () => {
       edit.id = index;
 
       collection.appendChild(unordered);
-      collection.appendChild(liner);
       unordered.appendChild(ordered);
+      unordered.appendChild(liner);
       ordered.appendChild(check);
       ordered.appendChild(input);
       ordered.appendChild(edit);
+
+      ['focus', 'blur', 'keyup'].forEach((evt) => {
+        input.addEventListener(evt, (e) => {
+          if (evt === 'blur' || (evt === 'keyup' && e.key === 'Enter')) {
+            const taskIndex = Number(e.target.id.split('-')[1]);
+            saveTodo(taskIndex);
+            e.target.blur();
+          }
+        });
+      });
     });
+
+    document.querySelector('#clear-completed').style.display = 'block';
+    document.querySelector('.note').style.display = 'block';
 
     document.querySelectorAll('.edit').forEach((e) => {
       e.addEventListener('click', editTodos);
+    });
+
+    document.querySelectorAll('.check').forEach((e) => {
+      e.addEventListener('change', completedTodos);
     });
   } else {
     document.querySelector('.todo-collection').innerHTML = '';
   }
 };
+
+const activity = document.querySelectorAll('.activity');
+
+activity.forEach((element) => {
+  ['focus', 'blur', 'keyup'].forEach((evt) => {
+    element.addEventListener(evt, (e) => {
+      if (evt === 'blur' || (evt === 'keyup' && e.key === 'Enter')) {
+        // It's a modify
+        const taskIndex = Number(e.target.id.split('-')[1]);
+        saveTodo(taskIndex);
+        e.target.blur();
+      }
+    });
+  });
+});
 
 const storeToDos = (e) => {
   e.preventDefault();

@@ -25,8 +25,8 @@ To get a local copy up and running follow these simple example steps.
 - Have [git](https://git-scm.com/downloads) installed.
 - Have the LTS version of [Node.js](https://nodejs.org/en/download/) installed.
 ### Setup
-- git clone https://github.com/emmiiorji/todo-list.git
-- cd todo-list/
+- git clone https://github.com/kendoriddy/to-do-list.git
+- cd to-do-list/
 - Run "npm install" to download required modules locally
 - Run "npm run start" to locally host the files and view on a browser
 ### Deployment

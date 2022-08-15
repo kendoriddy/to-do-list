@@ -11,7 +11,7 @@
 - CSS
 - JavaScript
 
-## Live Demo (if available)
+## Live Demo
 
 [Live Demo Link](https://kendoriddy.github.io/to-do-list/)
 

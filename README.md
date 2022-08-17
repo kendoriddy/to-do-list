@@ -4,6 +4,7 @@
 
 > This project is a list manager that will allow a user organize a list of their tasks. They can conveniently create, update and delete tasks.
 
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/86082070/185176494-da128dbd-349a-4012-958c-942dd35a2375.png">
 
 ## Built With
 

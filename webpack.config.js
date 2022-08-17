@@ -3,7 +3,15 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: {
+    main: path.resolve(__dirname, 'src/index.js'),
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
+    clean: true,
+    assetModuleFilename: '[name][ext]',
+  },
   devServer: {
     static: './dist',
   },
@@ -12,12 +20,6 @@ module.exports = {
       template: './src/index.html',
     }),
   ],
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
-    publicPath: '/to-do-list/',
-  },
   module: {
     rules: [
       {

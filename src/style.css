@@ -50,6 +50,7 @@ hr {
 
 .container {
   background: var(--milky);
+  background-image: url(https://i.pinimg.com/originals/88/15/63/881563d6444b370fa4ceea0c3183bb4c.gif);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -61,8 +62,9 @@ hr {
   min-width: 300px;
   box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.1), 5px 5px 5px rgba(0, 0, 0, 0.1);
   background: white;
-  padding: 10px;
+  padding: 15px;
   padding-bottom: 0;
+  border-radius: 5px;
 }
 
 header {

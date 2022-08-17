@@ -1,5 +1,6 @@
 import deleteIcon from '../assets/images/delete.png';
 import saveIcon from '../assets/images/save.jpeg';
+// eslint-disable-next-line import/no-cycle
 import showToDos from './modules/display.js';
 
 class ToDo {

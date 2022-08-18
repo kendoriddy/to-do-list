@@ -1,11 +1,5 @@
-class TASK {
-  constructor() {
-    this.taskList = [];
-  }
+const setStorage = (task) => {
+  localStorage.setItem('todos', JSON.stringify(task));
+};
 
-static getItems = () => JSON.parse(localStorage.getItem('todos'));
-
-static saveItems = (existingTodos) => localStorage.setItem('todos', JSON.stringify(existingTodos));
-}
-
-export default TASK;
+export default setStorage;

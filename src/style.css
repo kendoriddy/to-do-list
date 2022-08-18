@@ -156,6 +156,8 @@ header i {
 
 .completed {
   text-decoration: line-through;
+  color: var(--grey);
+  opacity: 0.5;
 }
 
 .active {

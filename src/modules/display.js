@@ -50,7 +50,7 @@ const showToDos = () => {
       ['focus', 'blur', 'keyup'].forEach((evt) => {
         input.addEventListener(evt, (e) => {
           if (evt === 'blur' || (evt === 'keyup' && e.key === 'Enter')) {
-            const taskIndex = Number(e.target.id.split('-')[1]);
+            const taskIndex = +e.target.id.split('-')[1];
             crud.saveTodo(taskIndex);
             e.target.blur();
           }

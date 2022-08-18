@@ -5,5 +5,7 @@ import { clearCompletedTodos } from './complete.js';
 
 document.querySelector('.enter').addEventListener('click', toDos.storeToDos);
 document.querySelector('form').addEventListener('submit', toDos.storeToDos);
-document.querySelector('#clear-completed').addEventListener('click', clearCompletedTodos);
+document
+  .querySelector('#clear-completed')
+  .addEventListener('click', clearCompletedTodos);
 window.addEventListener('load', showToDos);

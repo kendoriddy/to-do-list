@@ -104,6 +104,4 @@ const storeToDos = (e) => {
   }
 };
 
-export {
-  storeToDos, editTodos, saveTodos, saveTodo,
-};
+export { storeToDos, editTodos, saveTodos, saveTodo };

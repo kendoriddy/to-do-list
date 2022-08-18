@@ -1,8 +1,7 @@
 import { ToDo, showToDos } from '../crud.js';
 import setStorage from '../storage.js';
 
-const storeToDos = (e) => {
-  e.preventDefault();
+const store = () => {
   let existingTodos = JSON.parse(localStorage.getItem('todos'));
   existingTodos = existingTodos === null ? [] : existingTodos;
 
@@ -17,4 +16,9 @@ const storeToDos = (e) => {
   }
 };
 
-export default storeToDos;
+const storeToDos = (e) => {
+  e.preventDefault();
+  store();
+};
+
+export { storeToDos, store };

@@ -1,3 +1,5 @@
+import setStorage from './storage.js';
+
 const completedTodos = (e) => {
   const checkbox = e.target;
   let btnId = checkbox.id;
@@ -8,11 +10,11 @@ const completedTodos = (e) => {
   if (checkbox.checked) {
     existingTodos[id].completed = true;
     inputId.classList.add('completed');
-    localStorage.setItem('todos', JSON.stringify(existingTodos));
+    setStorage(existingTodos);
   } else {
     existingTodos[id].completed = false;
     inputId.classList.remove('completed');
-    localStorage.setItem('todos', JSON.stringify(existingTodos));
+    setStorage(existingTodos);
   }
 };
 
@@ -29,7 +31,7 @@ const clearCompletedTodos = () => {
   existingTodos.forEach((todo, i) => {
     (todo.index = i + 1);
   });
-  localStorage.setItem('todos', JSON.stringify(existingTodos));
+  setStorage(existingTodos);
 };
 
 export { completedTodos, clearCompletedTodos };

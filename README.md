@@ -27,7 +27,7 @@ To get a local copy up and running follow these simple example steps.
 - Have the LTS version of [Node.js](https://nodejs.org/en/download/) installed.
 ### Setup
 - git clone https://github.com/kendoriddy/to-do-list.git
-- cd to-do-list/
+- Change directory to the cloned app by runnning cd to-do-list/
 - Run "npm install" to download required modules locally
 - Run "npm run start" to locally host the files and view on a browser
 ### Deployment

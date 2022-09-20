@@ -14,7 +14,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://kendoriddy.github.io/to-do-list/)
+[Live Demo Link](https://plan-my-day.netlify.app/)
 
 
 ## Getting Started
